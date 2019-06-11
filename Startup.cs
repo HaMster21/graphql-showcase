@@ -1,6 +1,7 @@
 using HotChocolate;
 using HotChocolate.AspNetCore;
 using HotChocolate.Subscriptions;
+using HotChocolate.Types;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,10 +18,16 @@ namespace graphql_showcase
             services.AddDataLoaderRegistry();
 
             // Add GraphQL Services
-            services.AddGraphQL(sp => SchemaBuilder.New()
+            services.AddGraphQL(sp
+                => SchemaBuilder.New()
                 // enable for authorization support
                 // .AddDirectiveType<AuthorizeDirectiveType>()
-                .AddQueryType<Query>()
+
+                .AddQueryType<QueryType>()
+
+                .AddType<API.Types.ProductType>()
+                .AddType<API.Types.CatalogType>()
+
                 .Create());
         }
 
