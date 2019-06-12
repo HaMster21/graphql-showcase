@@ -12,6 +12,8 @@ namespace graphql_showcase
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<Domain.DataAccess.IProductRepository, Domain.DataAccess.InMemoryProductRepository>();
+
             services.AddInMemorySubscriptionProvider();
 
             // this enables you to use DataLoader in your resolvers.
