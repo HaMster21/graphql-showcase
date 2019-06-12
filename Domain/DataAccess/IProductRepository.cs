@@ -13,6 +13,8 @@ namespace graphql_showcase.Domain.DataAccess
         Task<IEnumerable<Product>> GetAllProducts();
 
         Task<Product> CreateProduct(string name, long gtin);
+
+        Task<Product> DeleteProduct(Guid id);
     }
 
     public class InMemoryProductRepository : IProductRepository
@@ -45,6 +47,15 @@ namespace graphql_showcase.Domain.DataAccess
             Products.Add(newProduct);
 
             return newProduct;
+        }
+
+        public async Task<Product> DeleteProduct(Guid id)
+        {
+            var productToDelete = Products.Single(product => product.ID == id);
+
+            Products.Remove(productToDelete);
+
+            return productToDelete;
         }
     }
 }

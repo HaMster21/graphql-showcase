@@ -14,5 +14,11 @@ namespace graphql_showcase.API.Resolvers
         {
             return await repository.CreateProduct(input.ProductName, input.GTIN);
         }
+
+        public async Task<Domain.Product> DeleteProduct([GraphQLNonNullType] Guid id,
+                                                        [Service] Domain.DataAccess.IProductRepository repository)
+        {
+            return await repository.DeleteProduct(id);
+        }
     }
 }
