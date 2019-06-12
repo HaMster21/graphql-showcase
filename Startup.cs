@@ -30,9 +30,10 @@ namespace graphql_showcase
                 .AddMutationType<API.Types.MutationType>()
 
                 .AddType<API.Types.ProductType>()
-                .AddType<API.Types.CatalogType>()
-
                 .AddType<API.Types.CreateProductInputType>()
+                .AddType<API.Types.UpdateProductInputType>()
+
+                .AddType<API.Types.CatalogType>()
 
                 .Create());
         }

@@ -14,6 +14,8 @@ namespace graphql_showcase.Domain.DataAccess
 
         Task<Product> CreateProduct(string name, long gtin);
 
+        Task<Product> UpdateProduct(Guid id, string name, long gtin);
+
         Task<Product> DeleteProduct(Guid id);
     }
 
@@ -56,6 +58,16 @@ namespace graphql_showcase.Domain.DataAccess
             Products.Remove(productToDelete);
 
             return productToDelete;
+        }
+
+        public async Task<Product> UpdateProduct(Guid id, string name, long gtin)
+        {
+            var productToUpdate = Products.Single(product => product.ID == id);
+
+            productToUpdate.Name = name;
+            productToUpdate.GTIN = gtin;
+
+            return productToUpdate;
         }
     }
 }

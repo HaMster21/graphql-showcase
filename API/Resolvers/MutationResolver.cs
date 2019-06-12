@@ -1,7 +1,5 @@
 ﻿using HotChocolate;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace graphql_showcase.API.Resolvers
@@ -15,10 +13,18 @@ namespace graphql_showcase.API.Resolvers
             return await repository.CreateProduct(input.ProductName, input.GTIN);
         }
 
+        [GraphQLDescription("Delete a product")]
         public async Task<Domain.Product> DeleteProduct([GraphQLNonNullType] Guid id,
                                                         [Service] Domain.DataAccess.IProductRepository repository)
         {
             return await repository.DeleteProduct(id);
+        }
+
+        public async Task<Domain.Product> UpdateProduct([GraphQLNonNullType] Guid id,
+                                                        [GraphQLNonNullType] Types.UpdateProductInput input,
+                                                        [Service] Domain.DataAccess.IProductRepository repository)
+        {
+            return await repository.UpdateProduct(id, input.Name, input.GTIN);
         }
     }
 }
