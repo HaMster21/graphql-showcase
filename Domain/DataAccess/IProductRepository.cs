@@ -27,7 +27,7 @@ namespace graphql_showcase.Domain.DataAccess
 
         public async Task<Product> GetProductById(Guid id)
         {
-            return Products.Single(p => p.ID == id);
+            return Products.Single(product => product.ID == id);
         }
     }
 }

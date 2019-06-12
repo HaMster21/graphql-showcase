@@ -13,6 +13,7 @@ namespace graphql_showcase
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<Domain.DataAccess.IProductRepository, Domain.DataAccess.InMemoryProductRepository>();
+            services.AddSingleton<Domain.DataAccess.ICatalogRepository, Domain.DataAccess.InMemoryCatalogRepository>();
 
             services.AddInMemorySubscriptionProvider();
 
