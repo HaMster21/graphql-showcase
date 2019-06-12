@@ -1,4 +1,5 @@
-﻿using System;
+﻿using graphql_showcase.API.Types;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,6 +11,8 @@ namespace graphql_showcase.Domain.DataAccess
         Task<Product> GetProductById(Guid id);
 
         Task<IEnumerable<Product>> GetAllProducts();
+
+        Task<Product> CreateProduct(string name, long gtin);
     }
 
     public class InMemoryProductRepository : IProductRepository
@@ -28,6 +31,20 @@ namespace graphql_showcase.Domain.DataAccess
         public async Task<Product> GetProductById(Guid id)
         {
             return Products.Single(product => product.ID == id);
+        }
+
+        public async Task<Product> CreateProduct(string name, long gtin)
+        {
+            var newProduct = new Product()
+            {
+                ID = Guid.NewGuid(),
+                Name = name ?? throw new ArgumentNullException(nameof(name)),
+                GTIN = gtin
+            };
+
+            Products.Add(newProduct);
+
+            return newProduct;
         }
     }
 }

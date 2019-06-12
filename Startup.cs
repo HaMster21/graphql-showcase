@@ -26,10 +26,13 @@ namespace graphql_showcase
                 // enable for authorization support
                 // .AddDirectiveType<AuthorizeDirectiveType>()
 
-                .AddQueryType<QueryType>()
+                .AddQueryType<API.Types.QueryType>()
+                .AddMutationType<API.Types.MutationType>()
 
                 .AddType<API.Types.ProductType>()
                 .AddType<API.Types.CatalogType>()
+
+                .AddType<API.Types.CreateProductInputType>()
 
                 .Create());
         }
