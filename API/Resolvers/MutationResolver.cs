@@ -28,8 +28,15 @@ namespace graphql_showcase.API.Resolvers
         }
 
         public async Task<Domain.Catalog> CreateCatalog([GraphQLNonNullType] Types.CreateCatalogInput input,
-                                                        [Service] Domain.DataAccess.ICatalogRepository repository){
+                                                        [Service] Domain.DataAccess.ICatalogRepository repository)
+        {
             return await repository.CreateCatalog(input.CatalogName);
+        }
+
+        public async Task<Domain.Catalog> DeleteCatalog([GraphQLNonNullType] Guid id,
+                                                        [Service] Domain.DataAccess.ICatalogRepository repository)
+        {
+            return await repository.DeleteCatalog(id);
         }
     }
 }
