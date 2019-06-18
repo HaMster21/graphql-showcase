@@ -26,5 +26,10 @@ namespace graphql_showcase.API.Resolvers
         {
             return await repository.UpdateProduct(id, input.Name, input.GTIN);
         }
+
+        public async Task<Domain.Catalog> CreateCatalog([GraphQLNonNullType] Types.CreateCatalogInput input,
+                                                        [Service] Domain.DataAccess.ICatalogRepository repository){
+            return await repository.CreateCatalog(input.CatalogName);
+        }
     }
 }

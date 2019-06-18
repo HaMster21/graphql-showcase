@@ -34,6 +34,7 @@ namespace graphql_showcase
                 .AddType<API.Types.UpdateProductInputType>()
 
                 .AddType<API.Types.CatalogType>()
+                .AddType<API.Types.CreateCatalogInputType>()
 
                 .Create());
         }

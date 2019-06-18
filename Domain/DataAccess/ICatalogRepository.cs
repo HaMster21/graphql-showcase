@@ -9,6 +9,8 @@ namespace graphql_showcase.Domain.DataAccess
     {
         Task<Catalog> GetCatalogById(Guid id);
         Task<IEnumerable<Catalog>> GetAllCatalogs();
+
+        Task<Catalog> CreateCatalog(string name);
     }
 
     public class InMemoryCatalogRepository : ICatalogRepository
@@ -24,6 +26,19 @@ namespace graphql_showcase.Domain.DataAccess
         public async Task<Catalog> GetCatalogById(Guid id)
         {
             return Catalogs.Single(catalog => catalog.ID == id);
+        }
+
+        public async Task<Catalog> CreateCatalog(string name)
+        {
+            var newCatalog = new Catalog()
+            {
+                ID = Guid.NewGuid(),
+                Name = name
+            };
+
+            Catalogs.Add(newCatalog);
+
+            return newCatalog;
         }
     }
 }
