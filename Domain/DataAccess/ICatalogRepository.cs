@@ -13,6 +13,8 @@ namespace graphql_showcase.Domain.DataAccess
         Task<Catalog> CreateCatalog(string name);
 
         Task<Catalog> DeleteCatalog(Guid id);
+
+        Task<Catalog> UpdateCatalog(Guid id, string name);
     }
 
     public class InMemoryCatalogRepository : ICatalogRepository
@@ -48,6 +50,13 @@ namespace graphql_showcase.Domain.DataAccess
             var catalogToDelete = Catalogs.Single(catalog => catalog.ID == id);
             Catalogs.Remove(catalogToDelete);
             return catalogToDelete;
+        }
+
+        public async Task<Catalog> UpdateCatalog(Guid id, string name)
+        {
+            var catalogToChange = Catalogs.Single(catalog => catalog.ID == id);
+            catalogToChange.Name = name;
+            return catalogToChange;
         }
     }
 }
