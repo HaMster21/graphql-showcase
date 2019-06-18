@@ -1,6 +1,6 @@
 ﻿using HotChocolate.Types;
 
-namespace graphql_showcase
+namespace graphql_showcase.API.Types
 {
     public class Query
     {
@@ -14,7 +14,7 @@ namespace graphql_showcase
             descriptor.Description("Provides access to queries");
 
             descriptor.BindFields(BindingBehavior.Explicit);
-            descriptor.Include<API.Resolvers.QueryResolver>();
+            descriptor.Include<Resolvers.QueryResolver>();
         }
     }
 }
