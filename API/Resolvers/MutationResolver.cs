@@ -61,5 +61,21 @@ namespace graphql_showcase.API.Resolvers
                 return referencedCatalog;
             }
         }
+
+        public async Task<Domain.Catalog> RemoveProductFromCatalog([GraphQLNonNullType] Guid catalogID,
+                                                                   [GraphQLNonNullType] Guid productID,
+                                                                   [Service] Domain.DataAccess.ICatalogRepository catalogRepository)
+        {
+            var referencedCatalog = await catalogRepository.GetCatalogById(catalogID);
+
+            if (referencedCatalog.Products.Contains(productID))
+            {
+                return await catalogRepository.RemoveProduct(catalogID, productID);
+            }
+            else
+            {
+                return referencedCatalog;
+            }
+        }
     }
 }

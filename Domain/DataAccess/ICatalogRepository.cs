@@ -17,6 +17,8 @@ namespace graphql_showcase.Domain.DataAccess
         Task<Catalog> UpdateCatalog(Guid id, string name);
 
         Task<Catalog> AddProduct(Guid catalogID, Guid productID);
+
+        Task<Catalog> RemoveProduct(Guid catalogID, Guid productID);
     }
 
     public class InMemoryCatalogRepository : ICatalogRepository
@@ -66,6 +68,15 @@ namespace graphql_showcase.Domain.DataAccess
             var referencedCatalog = Catalogs.Single(catalog => catalog.ID == catalogID);
 
             referencedCatalog.Products.Add(productID);
+
+            return referencedCatalog;
+        }
+
+        public async Task<Catalog> RemoveProduct(Guid catalogID, Guid productID)
+        {
+            var referencedCatalog = Catalogs.Single(catalog => catalog.ID == catalogID);
+
+            referencedCatalog.Products.Remove(productID);
 
             return referencedCatalog;
         }
