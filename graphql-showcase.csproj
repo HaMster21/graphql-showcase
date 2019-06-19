@@ -4,6 +4,8 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <LangVersion>7.2</LangVersion>
     <RootNamespace>graphql_showcase</RootNamespace>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>.</DockerfileContext>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -23,6 +25,7 @@
     <PackageReference Include="HotChocolate.AspNetCore.Playground" Version="9.0.1" />
     <PackageReference Include="HotChocolate.AspNetCore.Authorization" Version="9.0.1" />
     <PackageReference Include="HotChocolate.Subscriptions.InMemory" Version="9.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.7.9" />
   </ItemGroup>
 
 </Project>
