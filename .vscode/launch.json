@@ -36,7 +36,7 @@
             "name": "Docker Launch",
             "preLaunchTask": "docker build",
             "program": "docker",
-            "args": ["-p 5000:5000", "hamster21/graphql-showcase:latest"],
+            "args": ["--rm", "-p 5000:5000", "hamster21/graphql-showcase:latest"],
             "serverReadyAction":{
                 "action": "openExternally",
                 "pattern": "^\\s*Now listening on:\\s+(https?://\\S+)",
