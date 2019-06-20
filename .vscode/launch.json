@@ -8,8 +8,7 @@
             "name": ".NET Core Launch (web)",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
-            // If you have changed target frameworks, make sure to update the program path.
+            "preLaunchTask": "dotnet build",
             "program": "${workspaceFolder}/bin/Debug/netcoreapp2.1/graphql-showcase.dll",
             "args": [],
             "cwd": "${workspaceFolder}",
@@ -17,7 +16,8 @@
             // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
             "serverReadyAction": {
                 "action": "openExternally",
-                "pattern": "^\\s*Now listening on:\\s+(https?://\\S+)"
+                "pattern": "^\\s*Now listening on:\\s+(https?://\\S+)",
+                "uriFormat": "http://localhost:%s/graphiql"
             },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
@@ -31,6 +31,17 @@
             "type": "coreclr",
             "request": "attach",
             "processId": "${command:pickProcess}"
+        },
+        {
+            "name": "Docker Launch",
+            "preLaunchTask": "docker build",
+            "program": "docker",
+            "args": ["-p 5000:5000", "hamster21/graphql-showcase:latest"],
+            "serverReadyAction":{
+                "action": "openExternally",
+                "pattern": "^\\s*Now listening on:\\s+(https?://\\S+)",
+                "uriFormat": "http://localhost:%s/graphiql"
+            },
         }
     ]
 }
