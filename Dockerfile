@@ -16,4 +16,5 @@ RUN dotnet publish "graphql-showcase.csproj" -c Release -o /app
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
+EXPOSE 5000
 ENTRYPOINT ["dotnet", "graphql-showcase.dll"]

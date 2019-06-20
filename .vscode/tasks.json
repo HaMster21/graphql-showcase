@@ -4,14 +4,23 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "dotnet build",
             "command": "dotnet build",
             "type": "shell",
             "group": "build",
             "presentation": {
                 "reveal": "silent"
             },
-            "problemMatcher": "$msCompile"
+            "problemMatcher": "$msCompile",
+        },
+        {
+            "label": "docker build",
+            "command": "docker build -t hamster21/graphql-showcase:latest .",
+            "type": "shell",
+            "group": "build",
+            "presentation": {
+                "reveal": "always"
+            }
         }
     ]
 }

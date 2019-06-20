@@ -1,7 +1,6 @@
 using HotChocolate;
 using HotChocolate.AspNetCore;
 using HotChocolate.Subscriptions;
-using HotChocolate.Types;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -45,11 +44,11 @@ namespace graphql_showcase
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseGraphiQL();
             }
 
             app.UseWebSockets();
             app.UseGraphQL();
+            app.UseGraphiQL();
         }
     }
 }
