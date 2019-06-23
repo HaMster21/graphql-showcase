@@ -22,6 +22,7 @@ namespace graphql_showcase
             // Add GraphQL Services
             services.AddGraphQL(sp
                 => SchemaBuilder.New()
+                .EnableRelaySupport()
                 // enable for authorization support
                 // .AddDirectiveType<AuthorizeDirectiveType>()
 
