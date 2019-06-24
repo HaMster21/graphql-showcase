@@ -9,9 +9,22 @@
             "type": "shell",
             "group": "build",
             "presentation": {
-                "reveal": "silent"
+                "reveal": "silent",
+                "clear": true
             },
             "problemMatcher": "$msCompile",
+        },
+        {
+            "label": "clean",
+            "command": [
+                "dotnet clean"
+            ],
+            "type": "shell",
+            "group": "build",
+            "presentation": {
+                "reveal": "silent",
+            },
+            "problemMatcher":"$msCompile"
         },
         {
             "label": "docker build",
@@ -19,7 +32,7 @@
             "type": "shell",
             "group": "build",
             "presentation": {
-                "reveal": "always"
+                "reveal": "silent"
             }
         }
     ]

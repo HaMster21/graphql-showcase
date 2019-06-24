@@ -1,6 +1,9 @@
+using System;
 using HotChocolate;
 using HotChocolate.AspNetCore;
 using HotChocolate.Subscriptions;
+using HotChocolate.Types;
+using HotChocolate.Utilities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +25,7 @@ namespace graphql_showcase
             // Add GraphQL Services
             services.AddGraphQL(sp
                 => SchemaBuilder.New()
+
                 .EnableRelaySupport()
                 // enable for authorization support
                 // .AddDirectiveType<AuthorizeDirectiveType>()
