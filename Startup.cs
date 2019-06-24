@@ -1,9 +1,6 @@
-using System;
 using HotChocolate;
 using HotChocolate.AspNetCore;
 using HotChocolate.Subscriptions;
-using HotChocolate.Types;
-using HotChocolate.Utilities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,10 +30,12 @@ namespace graphql_showcase
                 .AddQueryType<API.Types.QueryType>()
                 .AddMutationType<API.Types.MutationType>()
 
+                .AddType<Domain.Product>()
                 .AddType<API.Types.ProductType>()
                 .AddType<API.Types.CreateProductInputType>()
                 .AddType<API.Types.UpdateProductInputType>()
 
+                .AddType<Domain.Catalog>()
                 .AddType<API.Types.CatalogType>()
                 .AddType<API.Types.CreateCatalogInputType>()
                 .AddType<API.Types.UpdateCatalogInputType>()
